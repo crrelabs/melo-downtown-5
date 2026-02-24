@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Downtown 5th — Luxury Miami Rentals</title>
+<meta name="description" content="Downtown 5th is Miami's premier luxury rental tower. Experience world-class amenities, spacious residences with premium finishes, and a prime Downtown Miami location.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        dark: '#0c1220',
+        accent: '#c8a45e',
+        'accent-light': '#dfc07a',
+        surface: '#141e30',
+        'surface-light': '#1c2940'
+      },
+      fontFamily: {
+        display: ['Playfair Display', 'serif'],
+        body: ['Inter', 'sans-serif']
+      }
+    }
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  body { font-family: 'Inter', sans-serif; background: #0c1220; }
+  .font-display { font-family: 'Playfair Display', serif; }
+  .hero-overlay { background: linear-gradient(to bottom, rgba(12,18,32,0.3) 0%, rgba(12,18,32,0.7) 60%, rgba(12,18,32,1) 100%); }
+  .glass { background: rgba(20,30,48,0.7); backdrop-filter: blur(16px); border: 1px solid rgba(200,164,94,0.12); }
+  .gold-line { width: 60px; height: 2px; background: linear-gradient(90deg, #c8a45e, #dfc07a); }
+  .gallery-img { transition: transform 0.5s ease, filter 0.5s ease; }
+  .gallery-img:hover { transform: scale(1.05); filter: brightness(1.15); }
+  .nav-link { position: relative; }
+  .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: #c8a45e; transition: width 0.3s; }
+  .nav-link:hover::after { width: 100%; }
+  header.scrolled { background: rgba(12,18,32,0.95); backdrop-filter: blur(12px); }
+  .lightbox { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; }
+  .lightbox.active { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-in { animation: fadeIn 0.8s ease forwards; }
+  .amenity-card { transition: transform 0.3s, box-shadow 0.3s; }
+  .amenity-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(200,164,94,0.1); }
+</style>
+</head>
+<body class="bg-dark text-gray-300">
+
+<!-- Header -->
+<header id="header" class="fixed top-0 w-full z-50 transition-all duration-500">
+<div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+  <a href="#" class="flex items-center gap-3">
+    <span class="font-display text-xl font-bold text-white">Downtown 5th</span>
+  </a>
+  <div class="hidden md:flex items-center gap-5 text-xs text-gray-400">
+    <a href="tel:3058002500" class="text-white/90 hover:text-accent transition flex items-center gap-1.5"><i class="fa-solid fa-phone text-accent text-[10px]"></i>(305) 800-2500</a>
+    <a href="mailto:info@downtown5.com" class="text-white/90 hover:text-accent transition flex items-center gap-1.5"><i class="fa-solid fa-envelope text-accent text-[10px]"></i>info@downtown5.com</a>
+  </div>
+  <nav class="hidden md:flex items-center gap-8 text-sm tracking-wide">
+    <a href="#about" class="nav-link text-white hover:text-accent transition">About</a>
+    <a href="#amenities" class="nav-link text-white hover:text-accent transition">Amenities</a>
+    <a href="#gallery" class="nav-link text-white hover:text-accent transition">Gallery</a>
+    <a href="#floorplans" class="nav-link text-white hover:text-accent transition">Floor Plans</a>
+    <a href="#contact" class="nav-link text-white hover:text-accent transition">Contact</a>
+  </nav>
+  <button id="menuBtn" class="md:hidden text-white text-2xl"><i class="fa-solid fa-bars"></i></button>
+</div>
+<!-- Mobile menu -->
+<div id="mobileMenu" class="hidden md:hidden glass mx-4 rounded-xl p-6 space-y-4 text-center">
+  <a href="#about" class="block text-gray-300 hover:text-accent py-2">About</a>
+  <a href="#amenities" class="block text-gray-300 hover:text-accent py-2">Amenities</a>
+  <a href="#gallery" class="block text-gray-300 hover:text-accent py-2">Gallery</a>
+  <a href="#floorplans" class="block text-gray-300 hover:text-accent py-2">Floor Plans</a>
+  <a href="#contact" class="block text-gray-300 hover:text-accent py-2">Contact</a>
+</div>
+</header>
+
+<!-- Hero -->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <img src="images/DSC7721.jpg" alt="Downtown 5th Miami" class="absolute inset-0 w-full h-full object-cover">
+  <div class="hero-overlay absolute inset-0"></div>
+  <div class="relative z-10 text-center px-6 fade-in">
+    <div class="gold-line mx-auto mb-8"></div>
+    <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight">Downtown 5th</h1>
+    <p class="text-xl md:text-2xl text-gray-300 font-light tracking-wide mb-4">Experience Luxury Living</p>
+    <p class="text-gray-400 text-lg mb-10">Miami's Premier Rental Tower · World-Class Amenities · Downtown Miami</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#gallery" class="px-8 py-3 bg-accent text-dark font-semibold rounded hover:bg-accent-light transition">Explore</a>
+      <a href="#contact" class="px-8 py-3 border border-white/20 text-white rounded hover:border-accent hover:text-accent transition">Schedule a Tour</a>
+    </div>
+  </div>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+    <i class="fa-solid fa-chevron-down text-accent/60 text-xl"></i>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="py-24 px-6">
+<div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+  <div>
+    <div class="gold-line mb-6"></div>
+    <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-6">Why Choose<br>Downtown 5th</h2>
+    <p class="text-gray-400 leading-relaxed mb-6">Downtown 5th combines modern luxury with the vibrant lifestyle of Miami. Discover refined living spaces designed for comfort and style, where every detail has been carefully curated to provide an unparalleled residential experience in the heart of the city.</p>
+    <p class="text-gray-400 leading-relaxed mb-8">With thoughtfully designed layouts featuring premium finishes, floor-to-ceiling windows, and a prime downtown location steps from Miami's best dining, shopping, and entertainment — Downtown 5th is where luxury meets convenience.</p>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
+      <div class="text-center">
+        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-accent/10 flex items-center justify-center">
+          <i class="fa-solid fa-building text-accent"></i>
+        </div>
+        <p class="text-white text-sm font-medium">Spacious Residences</p>
+      </div>
+      <div class="text-center">
+        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-accent/10 flex items-center justify-center">
+          <i class="fa-solid fa-location-dot text-accent"></i>
+        </div>
+        <p class="text-white text-sm font-medium">Prime Location</p>
+      </div>
+      <div class="text-center">
+        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-accent/10 flex items-center justify-center">
+          <i class="fa-solid fa-couch text-accent"></i>
+        </div>
+        <p class="text-white text-sm font-medium">Modern Interiors</p>
+      </div>
+      <div class="text-center">
+        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-accent/10 flex items-center justify-center">
+          <i class="fa-solid fa-concierge-bell text-accent"></i>
+        </div>
+        <p class="text-white text-sm font-medium">24/7 Concierge</p>
+      </div>
+    </div>
+  </div>
+  <div class="relative">
+    <img src="images/DSC8019.jpg" alt="Downtown 5th Exterior" class="rounded-xl shadow-2xl w-full">
+    <div class="absolute -bottom-6 -left-6 glass rounded-xl px-6 py-4 hidden md:block">
+      <p class="text-accent font-display text-lg font-semibold">Downtown Miami</p>
+      <p class="text-gray-400 text-sm">Miami, FL</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Amenities -->
+<section id="amenities" class="py-24 px-6 bg-surface/30">
+<div class="max-w-7xl mx-auto">
+  <div class="text-center mb-16">
+    <div class="gold-line mx-auto mb-6"></div>
+    <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">Luxury Amenities</h2>
+    <p class="text-gray-400 max-w-2xl mx-auto">Discover the perfect blend of luxury, comfort, and convenience.</p>
+  </div>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="amenity-card glass rounded-xl overflow-hidden">
+      <img src="images/image-42.png" alt="Swimming Pools" class="w-full h-48 object-cover">
+      <div class="p-6 text-center">
+        <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-accent/10 flex items-center justify-center">
+          <i class="fa-solid fa-water-ladder text-accent text-xl"></i>
+        </div>
+        <h3 class="text-white font-semibold mb-2">Two Large Swimming Pools</h3>
+        <p class="text-gray-400 text-sm">Resort-style pools perfect for relaxation and socializing</p>
+      </div>
+    </div>
+    <div class="amenity-card glass rounded-xl overflow-hidden">
+      <img src="images/image-45.png" alt="Fitness Center" class="w-full h-48 object-cover">
+      <div class="p-6 text-center">
+        <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-accent/10 flex items-center justify-center">
+          <i class="fa-solid fa-dumbbell text-accent text-xl"></i>
+        </div>
+        <h3 class="text-white font-semibold mb-2">3,600+ SF Fitness Center</h3>
+        <p class="text-gray-400 text-sm">State-of-the-art equipment for every workout style</p>
+      </div>
+    </div>
+    <div class="amenity-card glass rounded-xl p-6 text-center">
+      <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-accent/10 flex items-center justify-center">
+        <i class="fa-solid fa-briefcase text-accent text-xl"></i>
+      </div>
+      <h3 class="text-white font-semibold mb-2">Private Workspaces</h3>
+      <p class="text-gray-400 text-sm">Conference room and dedicated workspace for residents</p>
+    </div>
+    <div class="amenity-card glass rounded-xl p-6 text-center">
+      <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-accent/10 flex items-center justify-center">
+        <i class="fa-solid fa-champagne-glasses text-accent text-xl"></i>
+      </div>
+      <h3 class="text-white font-semibold mb-2">Social Room</h3>
+      <p class="text-gray-400 text-sm">Elegant gathering space for events and entertaining</p>
+    </div>
+    <div class="amenity-card glass rounded-xl p-6 text-center">
+      <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-accent/10 flex items-center justify-center">
+        <i class="fa-solid fa-children text-accent text-xl"></i>
+      </div>
+      <h3 class="text-white font-semibold mb-2">Kids Play Area</h3>
+      <p class="text-gray-400 text-sm">Safe and fun play space for the youngest residents</p>
+    </div>
+    <div class="amenity-card glass rounded-xl p-6 text-center">
+      <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-accent/10 flex items-center justify-center">
+        <i class="fa-solid fa-square-parking text-accent text-xl"></i>
+      </div>
+      <h3 class="text-white font-semibold mb-2">Covered Parking</h3>
+      <p class="text-gray-400 text-sm">Secure covered parking garage for all residents</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery" class="py-24 px-6">
+<div class="max-w-7xl mx-auto">
+  <div class="text-center mb-16">
+    <div class="gold-line mx-auto mb-6"></div>
+    <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">Gallery</h2>
+    <p class="text-gray-400">Take a visual tour of our exceptional spaces</p>
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+    <div class="col-span-2 row-span-2 rounded-xl overflow-hidden cursor-pointer" onclick="openLightbox(this)">
+      <img src="images/DSC7721.jpg" alt="Downtown 5th Exterior" class="gallery-img w-full h-full object-cover">
+    </div>
+    <div class="rounded-xl overflow-hidden cursor-pointer" onclick="openLightbox(this)">
+      <img src="images/DSC8019.jpg" alt="Building View" class="gallery-img w-full h-64 object-cover">
+    </div>
+    <div class="rounded-xl overflow-hidden cursor-pointer" onclick="openLightbox(this)">
+      <img src="images/image-42.png" alt="Pool Area" class="gallery-img w-full h-64 object-cover">
+    </div>
+    <div class="rounded-xl overflow-hidden cursor-pointer" onclick="openLightbox(this)">
+      <img src="images/image-45.png" alt="Fitness Center" class="gallery-img w-full h-64 object-cover">
+    </div>
+    <div class="rounded-xl overflow-hidden cursor-pointer" onclick="openLightbox(this)">
+      <img src="images/image-25.png" alt="Interior" class="gallery-img w-full h-64 object-cover">
+    </div>
+    <div class="rounded-xl overflow-hidden cursor-pointer" onclick="openLightbox(this)">
+      <img src="images/image-5.png" alt="Residence" class="gallery-img w-full h-64 object-cover">
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <button class="absolute top-6 right-6 text-white text-3xl hover:text-accent transition z-10">&times;</button>
+  <button id="lbPrev" class="absolute left-6 text-white text-3xl hover:text-accent transition z-10" onclick="event.stopPropagation();navLightbox(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+  <button id="lbNext" class="absolute right-6 text-white text-3xl hover:text-accent transition z-10" onclick="event.stopPropagation();navLightbox(1)"><i class="fa-solid fa-chevron-right"></i></button>
+  <img id="lbImg" src="" alt="Gallery Image" class="rounded-lg">
+</div>
+
+<!-- Floor Plans -->
+<section id="floorplans" class="py-24 px-6 bg-surface/30">
+<div class="max-w-7xl mx-auto">
+  <div class="text-center mb-16">
+    <div class="gold-line mx-auto mb-6"></div>
+    <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">Floor Plans</h2>
+    <p class="text-gray-400">Thoughtfully designed layouts for every lifestyle</p>
+  </div>
+  <div class="max-w-4xl mx-auto">
+    <div class="glass rounded-xl p-6">
+      <img src="images/Hosting-Plan.png" alt="Downtown 5th Floor Plan" class="w-full rounded-lg cursor-pointer" onclick="openLightbox(this)">
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="py-24 px-6 bg-surface/30">
+<div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
+  <div>
+    <div class="gold-line mb-6"></div>
+    <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-6">Contact & Leasing</h2>
+    <p class="text-gray-400 leading-relaxed mb-8">Ready to make Downtown 5th your home? Get in touch with our leasing team to schedule a private tour or learn about available residences.</p>
+    <div class="space-y-6">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
+          <i class="fa-solid fa-phone text-accent"></i>
+        </div>
+        <div>
+          <p class="text-white font-medium">Phone</p>
+          <a href="tel:3058002500" class="text-gray-400 hover:text-accent transition">(305) 800-2500</a>
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
+          <i class="fa-solid fa-envelope text-accent"></i>
+        </div>
+        <div>
+          <p class="text-white font-medium">Email</p>
+          <a href="mailto:info@downtown5.com" class="text-gray-400 hover:text-accent transition">info@downtown5.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="glass rounded-xl p-8">
+      <h3 class="font-display text-2xl font-bold text-white mb-6">Book Your Visit</h3>
+      <form class="space-y-6" onsubmit="submitForm(event)">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <input type="text" name="first_name" placeholder="First Name" required class="bg-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition">
+          <input type="text" name="last_name" placeholder="Last Name" class="bg-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition">
+        </div>
+        <input type="email" name="email" placeholder="Email Address" required class="w-full bg-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition">
+        <input type="tel" name="phone" placeholder="Phone Number" class="w-full bg-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition">
+        <textarea name="message" rows="4" placeholder="Tell us what you're looking for..." class="w-full bg-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition resize-none"></textarea>
+        <button type="submit" id="submitBtn" class="w-full py-3 bg-accent text-dark font-semibold rounded-lg hover:bg-accent-light transition">Send Message</button>
+      </form>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="border-t border-white/5 py-12 px-6">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+  <span class="font-display text-lg font-bold text-white">Downtown 5th</span>
+  <p class="text-gray-600 text-sm">© 2026 Downtown 5th. All Rights Reserved.</p>
+  <div class="flex gap-6 text-sm">
+    <a href="tel:3058002500" class="text-gray-500 hover:text-accent transition">(305) 800-2500</a>
+    <a href="mailto:info@downtown5.com" class="text-gray-500 hover:text-accent transition">info@downtown5.com</a>
+  </div>
+</div>
+</footer>
+
+<script>
+// Header scroll
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Mobile menu
+document.getElementById('menuBtn').addEventListener('click', () => {
+  const menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('hidden');
+});
+document.querySelectorAll('#mobileMenu a').forEach(a => {
+  a.addEventListener('click', () => document.getElementById('mobileMenu').classList.add('hidden'));
+});
+
+// Lightbox
+let lbImages = [];
+let lbIndex = 0;
+
+function openLightbox(el) {
+  const img = el.querySelector('img') || el;
+  const allImgs = [...document.querySelectorAll('.gallery-img, #floorplans img')];
+  lbImages = allImgs.map(i => i.src);
+  lbIndex = lbImages.indexOf(img.src);
+  if (lbIndex === -1) { lbImages = [img.src]; lbIndex = 0; }
+  document.getElementById('lbImg').src = lbImages[lbIndex];
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function navLightbox(dir) {
+  lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
+  document.getElementById('lbImg').src = lbImages[lbIndex];
+}
+
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('active')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') navLightbox(-1);
+  if (e.key === 'ArrowRight') navLightbox(1);
+});
+
+// Contact form
+function submitForm(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const form = e.target;
+  const data = new FormData(form);
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  const subject = encodeURIComponent('Downtown 5th Inquiry');
+  const body = encodeURIComponent(
+    `Name: ${data.get('first_name')} ${data.get('last_name')}\nEmail: ${data.get('email')}\nPhone: ${data.get('phone')}\n\n${data.get('message')}`
+  );
+  window.location.href = `mailto:info@downtown5.com?subject=${subject}&body=${body}`;
+  setTimeout(() => { btn.textContent = 'Message Sent!'; form.reset(); setTimeout(() => { btn.textContent = 'Send Message'; btn.disabled = false; }, 3000); }, 1000);
+}
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('fade-in'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('section').forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
